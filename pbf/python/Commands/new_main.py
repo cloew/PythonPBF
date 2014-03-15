@@ -21,7 +21,7 @@ class NewMain:
         """ Makes the main file at the given location """
         if IsDirectory(file):
             file = os.path.join(file, "main.py")
-        template_manager.CopyTemplate(file, "Python/main.py", templates_directory=TemplatesRoot)
+        template_manager.CopyTemplate(file, "main.py", templates_directory=TemplatesRoot)
     
     def help(self):
         """ Print the Usage of the New Main Command """
