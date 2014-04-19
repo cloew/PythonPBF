@@ -1,6 +1,6 @@
 from pbf.Commands import command_manager
 from pbf.helpers.file_helper import IsDirectory
-from pbf.python.templates import TemplatesRoot
+from pbf_python.templates import TemplatesRoot
 from pbf.templates import template_manager
 
 import os

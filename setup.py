@@ -1,10 +1,10 @@
 from distutils.core import setup
 
-setup(name='pbf.python',
-      version='.1',
+setup(name='pbf_python',
+      version='.2',
       description="Programmer's Best Friend Utility Extension for Python",
-      author='', # Add your name here
-      author_email='', # Add your e-mail here
-      packages=['pbf.python', 'pbf.python.Commands', 'pbf.python.helpers', 'pbf.python.templates'],
-      package_data = {'pbf.python.templates':['*']},
+      author='Chris Loew',
+      author_email='cloew123@gmail.com',
+      packages=['pbf_python', 'pbf_python.Commands', 'pbf_python.helpers', 'pbf_python.templates'],
+      package_data = {'pbf_python.templates':['*']},
      )
