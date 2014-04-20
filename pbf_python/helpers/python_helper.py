@@ -1,4 +1,3 @@
-from pbf.helpers.file_helper import IsDirectory
 from pbf.helpers.filename_helper import GetBaseFilenameWithoutExtension, RemoveFileExtension
 from pbf.helpers.Python.python_helper import IsPythonDirectory
 
