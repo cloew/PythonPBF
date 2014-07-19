@@ -35,3 +35,8 @@ def GetPythonRootForFilename(filename):
         if not IsPythonDirectory(directory):
             return directory
         currentPath = directory
+        
+def FindSetupFilename(dirname):
+    """ Return the Setup Filename """
+    root = GetPythonRootForFilename(dirname)
+    return os.path.join(root, 'setup.py')
