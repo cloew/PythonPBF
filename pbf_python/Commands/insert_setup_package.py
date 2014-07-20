@@ -9,11 +9,14 @@ class InsertSetupPackage:
     category = "insert"
     command = "setup-package"
     description = "Inserts a package into the setup package"
-    minimumNumberOfArguments = 1
     
-    def run(self, args):
+    def addArguments(self, parser):
+        """ Add arguments to the parser """
+        parser.add_argument('directory', action='store', help='Package Directory to add to setup.py file')
+    
+    def run(self, arguments):
         """ Run the command """
-        dirname = args[0]
+        dirname = arguments.directory
         self.insertPackage(dirname)
         
     def insertPackage(self, dirname):

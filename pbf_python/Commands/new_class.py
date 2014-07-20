@@ -8,11 +8,14 @@ class NewClass:
     category = "new"
     command = "class"
     description = "Create a new Python Class"
-    minimumNumberOfArguments = 1
     
-    def run(self, args):
+    def addArguments(self, parser):
+        """ Add arguments to the parser """
+        parser.add_argument('destination', action='store', help='Destination for the new Python class file')
+    
+    def run(self, arguments):
         """ Run the command """
-        self.createClass(args[0])
+        self.createClass(arguments.destination)
         
     def createClass(self, filename):
         """ Create a Class """

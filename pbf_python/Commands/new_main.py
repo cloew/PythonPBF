@@ -10,12 +10,16 @@ class NewMain:
     category = "new"
     command = "main"
     description = "Create a new Python main file"
-    minimumNumberOfArguments = 1
     
-    def run(self, args):
+    def addArguments(self, parser):
+        """ Add arguments to the parser """
+        parser.add_argument('destination', action='store', help='Destination for the main file')
+    
+    def run(self, arguments):
         """ Run the Command """
-        print "Creating Python main at:", args[0]
-        self.makeMain(args[0])
+        destination = arguments.destination
+        print "Creating Python main at:", destination
+        self.makeMain(destination)
         
     def makeMain(self, file):
         """ Makes the main file at the given location """
