@@ -1,5 +1,5 @@
+from pbf.helpers.file_helper import IsDirectory
 from pbf.helpers.filename_helper import GetBaseFilenameWithoutExtension, RemoveFileExtension
-from pbf.helpers.Python.python_helper import IsPythonDirectory
 
 import os
 
@@ -40,3 +40,8 @@ def FindSetupFilename(dirname):
     """ Return the Setup Filename """
     root = GetPythonRootForFilename(dirname)
     return os.path.join(root, 'setup.py')
+        
+def IsPythonDirectory(directory):
+    """ Return if the directory is a Python directory """
+    initFilePath = os.path.join(directory, "__init__.py")
+    return IsDirectory(directory) and os.path.exists(initFilePath)
