@@ -1,8 +1,9 @@
 from pbf.Commands import command_manager
 
-from pbf.Commands.Python.mk_pydir import MakePyDir as CoreMakePyDir
-
 from pbf_python.Commands.insert_setup_package import InsertSetupPackage
+
+from pbf.templates import template_manager
+import os
 
 class MakePyDir:
     """ Represents a command that makes a python directory """
@@ -24,7 +25,8 @@ class MakePyDir:
         
     def makePyDir(self, dirname, install=False):
         """ Create the Python directory """
-        CoreMakePyDir().makePyDir(dirname)
+        os.mkdir(dirname)
+        template_manager.Save(os.path.join(dirname, "__init__.py"), [])
         
         if install:
             insertCommand = InsertSetupPackage()
