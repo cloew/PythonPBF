@@ -25,6 +25,19 @@ def GetPythonImportString(filenameToImportFrom, imports, asName=None):
     importString = "from {0} import {1}{2}\n".format(package, ", ".join(imports), asString)
     return importString
     
+def GetPythonPackageRootForFilename(filename):
+    """ Returns the Python Package Root that the filename is in or None """
+    absolutePathToFilename = os.path.abspath(filename)
+    
+    currentPath = absolutePathToFilename
+    lastDirectory = None
+    while True:
+        directory = os.path.dirname(currentPath)
+        if not IsPythonDirectory(directory):
+            return lastDirectory
+        lastDirectory = directory
+        currentPath = directory
+    
 def GetPythonRootForFilename(filename):
     """ Returns the Python Project Root that the filename is in or None """
     absolutePathToFilename = os.path.abspath(filename)
