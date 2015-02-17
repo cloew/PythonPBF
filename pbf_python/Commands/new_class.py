@@ -1,9 +1,10 @@
 from pbf.helpers.filename_helper import GetPythonClassnameFromFilename
+from pbf.templates.template_loader import TemplateLoader
 from pbf_python.templates import TemplatesRoot
-from pbf.templates import template_manager
 
 class NewClass:
     """ Command to create a new Python class """
+    TEMPLATE_LOADER = TemplateLoader("class.py", TemplatesRoot)
     
     def addArguments(self, parser):
         """ Add arguments to the parser """
@@ -13,7 +14,7 @@ class NewClass:
         """ Run the command """
         self.createClass(arguments.destination)
         
-    def createClass(self, filename):
+    def createClass(self, filepath):
         """ Create a Class """
         classname = GetPythonClassnameFromFilename(filename)
-        template_manager.CopyTemplate(filename, "class.py", {"%ClassName%":classname}, TemplatesRoot)
+        self.TEMPLATE_LOADER.copy(filepath, keywords={"%ClassName%":classname})

@@ -1,11 +1,11 @@
-from pbf.helpers.file_helper import IsDirectory
+from pbf.templates.template_loader import TemplateLoader
 from pbf_python.templates import TemplatesRoot
-from pbf.templates import template_manager
 
 import os
 
 class NewMain:
     """ Creates a new Python Main file """
+    TEMPLATE_LOADER = TemplateLoader("main.py", TemplatesRoot, defaultFilename="main.py")
     
     def addArguments(self, parser):
         """ Add arguments to the parser """
@@ -17,8 +17,6 @@ class NewMain:
         print "Creating Python main at:", destination
         self.makeMain(destination)
         
-    def makeMain(self, file):
+    def makeMain(self, filepath):
         """ Makes the main file at the given location """
-        if IsDirectory(file):
-            file = os.path.join(file, "main.py")
-        template_manager.CopyTemplate(file, "main.py", templates_directory=TemplatesRoot)
+        self.TEMPLATE_LOADER.copy(filepath)
