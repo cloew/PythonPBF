@@ -3,8 +3,11 @@ from pbf.helpers.filename_helper import GetBaseFilenameWithoutExtension, RemoveF
 
 import os
 
-def GetPythonPackageForFilename(rootDirectory, filename):
+def GetPythonPackageForFilename(filename, rootDirectory=None):
     """ Return the Python Package Path for the given filename from the given Python root """
+    if rootDirectory is None:
+        rootDirectory = GetPythonRootForFilename(filename)
+        
     if rootDirectory is not None:
         path = os.path.relpath(filename, rootDirectory)
         path = RemoveFileExtension(path)
@@ -15,8 +18,7 @@ def GetPythonPackageForFilename(rootDirectory, filename):
     
 def GetPythonImportString(filenameToImportFrom, imports, asName=None):
     """ Constructs and returns a Python Import Line """
-    packageRoot = GetPythonRootForFilename(filenameToImportFrom)
-    package = GetPythonPackageForFilename(packageRoot, filenameToImportFrom)
+    package = GetPythonPackageForFilename(filenameToImportFrom)
     asString = ""
     
     if asName is not None and len(imports) == 1:
