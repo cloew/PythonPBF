@@ -1,4 +1,3 @@
-from pbf.Commands import command_manager
 
 from pbf_python.Commands.insert_setup_package import InsertSetupPackage
 
@@ -7,9 +6,6 @@ import os
 
 class MakePyDir:
     """ Represents a command that makes a python directory """
-    category = "mk"
-    command = "pydir"
-    description = "Makes a Python Directory"
     
     def addArguments(self, parser):
         """ Add arguments to the parser """
@@ -31,10 +27,3 @@ class MakePyDir:
         if install:
             insertCommand = InsertSetupPackage()
             insertCommand.insertPackage(dirname)
-    
-    def help(self):
-        """ Print the usage of the Make Py Dir """
-        print "Usage: pbf {category} {command} [path/to/dir]".format(category=self.category, command=self.command)
-        print "\tWill create a Python Directory called [name] at the path given"
-    
-command_manager.RegisterCommand(MakePyDir)

@@ -1,4 +1,3 @@
-from pbf.Commands import command_manager
 from pbf.helpers.file_helper import GetLinesFromFile, Save
 from pbf_python.helpers.python_helper import GetPythonPackageForFilename, GetPythonRootForFilename, FindSetupFilename
 
@@ -6,9 +5,6 @@ import os
 
 class InsertSetupPackage:
     """ Represents a command to insert a Python package into the setup file """
-    category = "insert"
-    command = "setup-package"
-    description = "Inserts a package into the setup package"
     
     def addArguments(self, parser):
         """ Add arguments to the parser """
@@ -83,10 +79,3 @@ class InsertSetupPackage:
                 return i
         return None
         
-    
-    def help(self):
-        """ Print Command usage """
-        print "Usage: pbf {category} {command} [package-directory]".format(category=self.category, command=self.command)
-        print "Insert the package path to the given directory in the setup.py file"
-    
-command_manager.RegisterCommand(InsertSetupPackage)

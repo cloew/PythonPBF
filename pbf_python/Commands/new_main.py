@@ -1,4 +1,3 @@
-from pbf.Commands import command_manager
 from pbf.helpers.file_helper import IsDirectory
 from pbf_python.templates import TemplatesRoot
 from pbf.templates import template_manager
@@ -7,9 +6,6 @@ import os
 
 class NewMain:
     """ Creates a new Python Main file """
-    category = "new"
-    command = "main"
-    description = "Create a new Python main file"
     
     def addArguments(self, parser):
         """ Add arguments to the parser """
@@ -26,10 +22,3 @@ class NewMain:
         if IsDirectory(file):
             file = os.path.join(file, "main.py")
         template_manager.CopyTemplate(file, "main.py", templates_directory=TemplatesRoot)
-    
-    def help(self):
-        """ Print the Usage of the New Main Command """
-        print "Usage: pbf {category} {command} [path/to/main.py]".format(category=self.category, command=self.command)
-        print "\tWill create a main.py file at the location given"
-    
-command_manager.RegisterCommand(NewMain)
