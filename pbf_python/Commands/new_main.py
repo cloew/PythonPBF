@@ -1,8 +1,6 @@
 from pbf.templates.template_loader import TemplateLoader
 from pbf_python.templates import TemplatesRoot
 
-import os
-
 class NewMain:
     """ Creates a new Python Main file """
     TEMPLATE_LOADER = TemplateLoader("main.py", TemplatesRoot, defaultFilename="main.py")
