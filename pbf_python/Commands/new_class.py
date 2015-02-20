@@ -16,5 +16,5 @@ class NewClass:
         
     def createClass(self, filepath):
         """ Create a Class """
-        classname = GetPythonClassnameFromFilename(filename)
+        classname = GetPythonClassnameFromFilename(filepath)
         self.TEMPLATE_LOADER.copy(filepath, keywords={"%ClassName%":classname})
