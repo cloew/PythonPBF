@@ -26,7 +26,7 @@ class InsertSetupPackage:
     def updateSetupFile(self, dirname, setupFilename):
         """ Update the setup file """
         originalLines = GetLinesFromFile(setupFilename)
-        packagePath = "'{0}'".format(GetPythonPackageForFilename(GetPythonRootForFilename(dirname), dirname))
+        packagePath = "'{0}'".format(GetPythonPackageForFilename(dirname))
         
         packagesLineNumber = self.findPackagesLineNumber(originalLines)
         packagesEndLineNumber = None
