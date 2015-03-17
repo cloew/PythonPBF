@@ -34,6 +34,7 @@ class InsertSetupPackage:
         originalPackageStringHeader = originalLines[packagesLineNumber].split('[')[0]
         whitespaceLength = len(originalPackageStringHeader) + 1
         packagesString, packagesEndLineNumber = self.buildPackagesString(originalLines, packagesLineNumber)
+        
         packages = self.getPackages(packagesString)
         packages.append(packagePath)
         
@@ -48,20 +49,19 @@ class InsertSetupPackage:
         
     def buildPackagesString(self, lines, packagesLineNumber):
         """ Build Packages String """
-        packagesString = lines[packagesLineNumber].split('[')[1]
+        firstLine = lines[packagesLineNumber].split('[')[1]
+        lines = [firstLine] + lines[packagesLineNumber+1:]
+        
+        packagesString = ''
         packagesEndLineNumber = packagesLineNumber
         
-        if ']' in packagesString:
-            packagesString = packagesString.split(']')[0]
-        else:
-            for i in range(packagesLineNumber, len(lines)):
-                line = lines[i]
-                if ']' in line:
-                    packagesString += line.split(']')[0]
-                    packagesEndLineNumber = i
-                    break
-                else:
-                    packagesString += line
+        for i, line in enumerate(lines):
+            if ']' in line:
+                packagesString += line.split(']')[0]
+                packagesEndLineNumber = i + packagesLineNumber
+                break
+            else:
+                packagesString += line
                 
         return packagesString, packagesEndLineNumber
         
