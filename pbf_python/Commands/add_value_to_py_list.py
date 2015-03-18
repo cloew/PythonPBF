@@ -19,7 +19,7 @@ class AddValueToPyList:
             destination = filename
         
         file = KaoFile.open(filename)
-        listSection = SectionFinder(PythonListDetector(listName)).find(file)
+        listSection = SectionFinder(PythonListDetector(listName)).find(file, direction=SectionFinder.UP)
         
         if listSection is None:
             print("Unable to find List: {0}".format(listName))
