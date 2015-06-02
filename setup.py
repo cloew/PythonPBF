@@ -7,4 +7,5 @@ setup(name='pbf_python',
       author_email='cloew123@gmail.com',
       packages=['pbf_python', 'pbf_python.Commands', 'pbf_python.helpers', 'pbf_python.templates'],
       package_data = {'pbf_python.templates':['*']},
+      install_requires = ["kao_file"]
      )
